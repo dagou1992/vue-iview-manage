@@ -15,18 +15,14 @@
 
   export default {
       mounted() {
-          this.$store.commit(INIT);
+          this.$store.commit('about/' + INIT);
       },
       computed: {
-          ...mapState({
-              count: state => state.about.count,
-              data: state => state.about.data,
-              loading: state => state.about.loading,
-          }),
-          ...mapGetters(['cut']),
+          ...mapState('about', ['count', 'data', 'loading']),
+          ...mapGetters('about', ['cut']),
       },
       methods: {
-          ...mapActions([ADD]),
+          ...mapActions('about', [ADD]),
           onAdd() {
               this.add(10)
           },
